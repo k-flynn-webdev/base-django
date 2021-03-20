@@ -1,7 +1,6 @@
 # base-django
 Django base starter app
 
-
 Simple base django project to get started with:
 - VueJs decoupled front
 - Mysql DB
@@ -17,3 +16,5 @@ Simple base django project to get started with:
 - Supervisor setup
 
 - Logging by xx?
+
+
