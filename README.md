@@ -17,4 +17,4 @@ Simple base django project to get started with:
 
 - Logging by xx?
 
-
+- Updated Admin interface
