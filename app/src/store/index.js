@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import api from './api.js'
+import api from './csrf.js'
 import user from './user.js'
 import track from './track.js'
 // import plans from './plans.js'

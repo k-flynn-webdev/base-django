@@ -23,12 +23,10 @@ const actions = {
    *  A helper method to try keep requests
    *  legal via a csrf token without spamming the API
    *
-   * @param   context
    * @param   {object}    context
    * @return  {Promise}   201 no content
    */
-  getCSRF: function (context) {
-    // tbd if this is any good todo:
+  get: function (context) {
     if ((context.state.CSRF_requested_at &&
       (new Date() - context.state.CSRF_requested_at) < TIME_CHECK)) {
       return Promise.resolve(true)
