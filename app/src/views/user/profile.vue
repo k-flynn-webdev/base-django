@@ -13,7 +13,7 @@
                  type="email"
                  placeholder="e.g. bobsmith@gmail.com"
                  required
-                 @input="$store.dispatch('api/getCSRF')"
+                 @input="$store.dispatch('csrf/get')"
                  >
         </div>
       </div>
@@ -28,7 +28,7 @@
                  placeholder="*******"
                  class="input"
                  required
-                 @input="$store.dispatch('api/getCSRF')"
+                 @input="$store.dispatch('csrf/get')"
                  >
         </div>
       </div>
@@ -53,7 +53,7 @@ import { REGISTER } from '@/constants'
 import { genericErrMixin } from '@/plugins/genericErrPlugin'
 
 export default {
-  name: 'user-register',
+  name: 'user-profile',
 
   mixins: [
     genericErrMixin
@@ -90,7 +90,7 @@ export default {
 
       this.loading = true
 
-      return this.$store.dispatch('api/getCSRF')
+      return this.$store.dispatch('csrf/get')
       .then(() => {
         return this.$store.dispatch('user/register', {
           email: this.form.email,

@@ -44,10 +44,6 @@ export default {
     pageFooter
   },
 
-  mounted () {
-    return this.$store.dispatch('api/getCSRF')
-  },
-
   methods: {
     onTitle (input) {
       this.title = input

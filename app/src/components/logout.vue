@@ -55,7 +55,7 @@ export default {
 
       this.loading = true
 
-      return this.$store.dispatch('api/getCSRF')
+      return this.$store.dispatch('csrf/get')
       .then(() => this.$store.dispatch('user/logout'))
       .then(() => this.$router.push({ name: 'home' }))
       .catch(err => this.handleError(err))
