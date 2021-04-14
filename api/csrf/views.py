@@ -1,4 +1,4 @@
-from django.views.decorators.http import require_GET, require_POST
+from django.views.decorators.http import require_GET
 from django.http import HttpResponse
 from django.middleware.csrf import get_token
 

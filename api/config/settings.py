@@ -29,13 +29,19 @@ load_dotenv(os.path.join(PARENT_DIR, '.env'))
 # MODE
 DEBUG = os.getenv("APP_MODE") == 'DEBUG'
 
+# USER
+AUTH_USER_MODEL = 'users.CustomUser'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_USERNAME_REQUIRED = False
+
 # SECURITY
 SECRET_KEY = os.getenv("APP_SECRET")
 
-ROOT_URLCONF = 'main.urls'
+ROOT_URLCONF = 'config.urls'
 WSGI_APPLICATION = 'config.wsgi.application'
 APPEND_SLASH = False
-AUTH_USER_MODEL = 'users.CustomUser'
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'minitrack.kubedev.co.uk', 'www.minitrack.kubedev.co.uk']
 
 # SECURITY
@@ -50,6 +56,8 @@ SESSION_COOKIE_AGE = 1209600
 if os.getenv("APP_MODE") == 'PRODUCTION':
     CSRF_COOKIE_SECURE = True           # requires https
     SESSION_COOKIE_SECURE = True        # requires https
+
+SITE_ID = 1
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
@@ -74,6 +82,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_auth',
+
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+    
 #     'rest_auth.registration',
     'csrf',
     'users',
