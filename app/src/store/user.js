@@ -121,11 +121,8 @@ const actions = {
    * @return {Promise}
    */
   logout: function (context) {
+    context.commit('logout', null)
     return HTTP.remove(LOGOUT.API.DELETE)
-    .then(() => {
-      context.commit('logout', null)
-      return 'blaaa'
-    })
   },
   /**
    * Get User details via API
