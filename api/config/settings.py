@@ -56,13 +56,14 @@ if os.getenv("APP_MODE") == 'PRODUCTION':
 # USER
 AUTH_USER_MODEL = 'users.CustomUser'
 # ALLAUTH
+ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 LOGIN_URL = os.getenv("WEB_ADDRESS_LOGIN")
-
+LOGIN_REDIRECT_URL = os.getenv("WEB_ADDRESS")
 
 # Application definition
 INSTALLED_APPS = [
@@ -87,8 +88,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'dj_rest_auth',
-    'dj_rest_auth.registration',
+    # 'dj_rest_auth',
+    # 'dj_rest_auth.registration',
 
     # CUSTOM
     'users',
@@ -107,7 +108,7 @@ MIDDLEWARE = [
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -115,6 +116,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                # ADD ENV VARS
+                'custom.context_processors.export_vars',
             ],
         },
     },
@@ -152,6 +156,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
     ],
+    'DEFAULT_PERMISSION_CLASSES': 'rest_framework.permissions.IsAuthenticated',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
     'PAGE_SIZE': 30,
 }
@@ -227,8 +232,8 @@ STATICFILES_DIRS = [
 
 # todo this might be broken ;O
 # Webpack output location containing Vue index.html file (outputDir)
-TEMPLATES[0]['DIRS'] += [
-    os.path.join(APP_DIR, 'dist'),
-]
+# TEMPLATES[0]['DIRS'] += [
+#     os.path.join(APP_DIR, 'dist'),
+# ]
 
 
