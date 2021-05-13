@@ -3,7 +3,6 @@ import HTTP from '@/services/HttpService'
 
 const TIME_CHECK = 30 * 60 * 1000; /* ms */
 
-
 /**
  * Returns initial store state
  *
@@ -11,7 +10,23 @@ const TIME_CHECK = 30 * 60 * 1000; /* ms */
  */
 function initState () {
   return {
+    /** @type {null|string} */
+    token: null,
+     /** @type {date} */
     CSRF_requested_at: null,
+  }
+}
+
+const mutations = {
+  /**
+   * Set CSRF token
+   *
+   * @param {object}  state
+   * @param {string}  input
+   */
+  token: function (state, input) {
+    state.token = input
+    state.CSRF_requested_at = new Date()
   }
 }
 
@@ -24,18 +39,18 @@ const actions = {
    *  legal via a csrf token without spamming the API
    *
    * @param   {object}    context
-   * @return  {Promise}   201 no content
+   * @return  {Promise}   current token value
    */
   get: function (context) {
     if ((context.state.CSRF_requested_at &&
       (new Date() - context.state.CSRF_requested_at) < TIME_CHECK)) {
-      return Promise.resolve(true)
+      return Promise.resolve(context.state.token)
     }
 
     return HTTP.get(CSRF.API.GET)
-    .then(() => {
-      context.state.CSRF_requested_at = new Date()
-      return true
+    .then(({ data }) => {
+      context.commit('token', data.token)
+      return data.token
     })
   }
 }
@@ -43,5 +58,6 @@ const actions = {
 export default {
   namespaced: true,
   state: initState(),
+  mutations: mutations,
   actions: actions
 }

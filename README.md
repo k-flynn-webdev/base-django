@@ -1,8 +1,11 @@
 # base-django
 Django base starter app
 
+Combining a VueJS front-end and a static User auth pages via Django Templates.
+
 Simple base django project to get started with:
 - VueJs decoupled front
+- Django all-auth User pages
 - Mysql DB
 - Django
 - DRF API

@@ -12,7 +12,7 @@
             class="title has-text-white level-item">
           {{ $route.meta.title }}
         </router-link>
-        <logout class="level-right" />
+        <btn-login-logout class="level-right" />
       </div>
 
       <div class="columns is-centered">
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import logout from '@/components/logout'
+import btnLoginLogout from '@/components/btn-login-logout'
 import pageFooter from '@/components/pageFooter'
 
 export default {
@@ -40,7 +40,7 @@ export default {
   },
 
   components: {
-    logout,
+    btnLoginLogout,
     pageFooter
   },
 

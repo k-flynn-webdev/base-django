@@ -1,0 +1,15 @@
+from django.shortcuts import render
+from django.http import JsonResponse
+from django.middleware.csrf import get_token
+
+# Create your views here.
+
+
+def get_csrf(request):
+    token = get_token(request)
+    response = JsonResponse({
+        'detail': 'CSRF cookie set',
+        'token': token
+    })
+    response['X-CSRFToken'] = token
+    return response

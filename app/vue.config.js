@@ -4,22 +4,30 @@ process.env.VUE_APP_NAME = require('./package.json').name
 module.exports = {
   devServer: {
     proxy: {
-      '/admin': {
-        target: 'http://127.0.0.1:8400/',
+      '^/static': {
+        // target: process.env.API_ADDRESS,
+        target: 'http://127.0.0.1:8700',
+        changeOrigin: true,
         ws: false,
       },
-      '/api/': {
-        target: 'http://127.0.0.1:8400/',
+      '^/admin': {
+        // target: process.env.API_ADDRESS,
+        target: 'http://127.0.0.1:8700',
+        changeOrigin: true,
         ws: false,
       },
-      '/rest-auth/': {
-        target: 'http://127.0.0.1:8400/',
+      '^/accounts': {
+        // target: process.env.ACCOUNTS_ADDRESS,
+        target: 'http://127.0.0.1:8700',
+        changeOrigin: true,
         ws: false,
-      }
-      // '/login': {
-      //   target: 'http://127.0.0.1:8000/',
-      //   ws: false,
-      // },
+      },
+      '^/api': {
+        // target: process.env.API_ADDRESS,
+        target: 'http://127.0.0.1:8700',
+        changeOrigin: true,
+        ws: false,
+      },
     }
   },
   // outputDir must be added to Django's TEMPLATE_DIRS
@@ -27,4 +35,3 @@ module.exports = {
   // assetsDir must match Django's STATIC_URL
   assetsDir: 'static',
 }
-

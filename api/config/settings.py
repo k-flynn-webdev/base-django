@@ -64,6 +64,7 @@ ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 LOGIN_URL = os.getenv("WEB_ADDRESS_LOGIN")
 LOGIN_REDIRECT_URL = os.getenv("WEB_ADDRESS")
+ACCOUNT_LOGOUT_ON_GET = False
 
 # Application definition
 INSTALLED_APPS = [
@@ -72,8 +73,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.staticfiles',
 
     # 'django.contrib.auth.backends.ModelBackend',
 
@@ -92,11 +93,13 @@ INSTALLED_APPS = [
     # 'dj_rest_auth.registration',
 
     # CUSTOM
+    'csrf',
     'users',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -136,7 +139,6 @@ DEFAULT_FROM_EMAIL = os.getenv("MAIL_FROM")  # if you don't already have this in
 EMAIL_BACKEND = "anymail.backends.mailgun.EmailBackend"  # or sendgrid.EmailBackend, or...
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-
 
 
 # AUTH
@@ -220,6 +222,7 @@ USE_TZ = True
 
 # ASSETS
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(PARENT_DIR, 'static')
 
 # Vue project location

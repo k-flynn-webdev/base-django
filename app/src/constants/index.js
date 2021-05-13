@@ -1,7 +1,7 @@
 // todo : Add default func objects in each object
 
 export const VARS = {
-  name: 'Minitrack',
+  name: 'BASE',
   pageLimit: 20,
   sort: {
     direction: [
@@ -11,7 +11,6 @@ export const VARS = {
     types: [
       { name: 'created', value: 'created_at' },
       { name: 'updated', value: 'updated_at' },
-      { name: 'done', value: 'done_at' },
     ]
   },
   userLocal: 'user-local'
@@ -35,6 +34,7 @@ function checkEmail (input) {
       input.split('@').length > 1 &&
       input.split('.').length > 1)
 }
+
 /**
  * Check Password input is valid
  *
@@ -46,10 +46,11 @@ function checkPassword (input) {
 }
 
 export const REGISTER = {
-  value: 'login',
-  route: { name: 'login', path: '/login' },
+  value: 'signup',
+  route: { name: 'signup', path: '/accounts/signup' },
   API: {
-    POST: '/rest-auth/register'
+    GET: '/accounts/signup',
+    POST: '/accounts/signup'
   },
   isValid: (input) => {
     return (input &&
@@ -62,48 +63,29 @@ export const REGISTER = {
 
 export const LOGIN = {
   value: 'login',
-  route: { name: 'login', path: '/login' },
+  route: { name: 'login', path: '/accounts/login/' },
   API: {
-    POST: '/rest-auth/login'
+    GET: '/accounts/login',
+    POST: '/accounts/login'
   },
-  isValid: (input) => {
-    return (input &&
-        input.email &&
-        input.password &&
-        checkEmail(input.email) &&
-        checkPassword(input.password))
-  }
+  isValid: REGISTER.isValid
 }
 
 export const LOGOUT = {
   value: 'logout',
-  route: { name: 'logout', path: '/logout' },
+  route: { name: 'logout', path: '/accounts/logout/' },
   API: {
-    DELETE: '/rest-auth/logout'
+    GET: '/accounts/logout',
+    POST: '/accounts/logout'
   }
 }
-
-// export const VERIFY = {
-//   value: 'verify',
-//   route: { name: 'verify', path: '/verify' },
-//   API: { GET: '/config/verify' }
-// }
-//
-// export const RECOVER = {
-//   value: 'recover',
-//   route: { name: 'recover', path: '/recover' },
-//   API: {
-//     GET: '/config/recover',
-//     PATCH: '/config/recover'
-//   }
-// }
 
 export const USER = {
   value: 'user',
   store: 'user',
   route: { name: 'user', path: '/user' },
   API: {
-    GET: '/rest-auth/user'
+    GET: '/api/whoami'
   }
 }
 
@@ -130,141 +112,6 @@ export const USER = {
  * @property {date}     updated_at
  */
 
-export const TRACK = {
-  value: 'track',
-  store: 'track',
-  route: {
-    name: 'track',
-    path: '/track',
-  },
-  API: {
-    GET: '/api/track',
-    POST: '/api/track',
-    PATCH: '/api/track',
-    DELETE: '/api/track',
-  },
-  /**
-   * Check if input is valid
-   * @returns {boolean}
-   */
-  isValid: (input) => { return input &&
-      input.track &&
-      input.track.length >= 5 },
-  /**
-   * Creates default Track
-   * @return {Track}
-   */
-  default: () => {
-    return {
-      id: -1,
-      user: -1,
-      value: '',
-      tags: [],
-      created_at: '',
-      updated_at: '',
-    }
-  }
-}
-
-/**
- * @typedef {object}    Tag
- *
- * @property {number}   id
- * @property {number}   user
- * @property {string}   value
- * @property {date}     created_at
- */
-
-export const TAG = {
-  value: 'tag',
-  store: 'tag',
-  route: {
-    name: 'tag',
-    path: '/tag',
-  },
-  API: {
-    GET: '/api/tag',
-    POST: '/api/tag',
-    PATCH: '/api/tag',
-    DELETE: '/api/tag',
-  },
-  /**
-   * Check if input is valid
-   * @returns {boolean}
-   */
-  isValid: (input) => { return input &&
-      input.value &&
-      input.value.length >= 3 },
-  /**
-   * Creates default Tag
-   * @return {Tag}
-   */
-  default: () => {
-    return {
-      id: -1,
-      user: -1,
-      value: '',
-      created_at: '',
-    }
-  }
-}
-
-//
-// export const PLAN = {
-//   index: 2,
-//   text: 'plans',
-//   value: 'plan',
-//   store: 'plans',
-//   parent: 'project',
-//   child: 'task',
-//   children: ['plan', 'task'],
-//   route: {
-//     name: 'plan',
-//     path: '/plans',
-//   },
-//   API: {
-//     GET: '/config/plans',
-//     POST: '/config/plans',
-//     PATCH: '/config/plans',
-//     DELETE: '/config/plans',
-//   }
-// }
-//
-// export const TASK = {
-//   index: 1,
-//   text: 'tasks',
-//   value: 'task',
-//   store: 'tasks',
-//   parent: 'plan',
-//   child: null,
-//   children: ['task'],
-//   route: {
-//     name: 'task',
-//     path: '/tasks',
-//   },
-//   API: {
-//     GET: '/config/tasks',
-//     POST: '/config/tasks',
-//     PATCH: '/config/tasks',
-//     DELETE: '/config/tasks',
-//   }
-// }
-//
-// export const HOME = {
-//   value: 'Minitask',
-//   route: {
-//     name: 'home',
-//     path: '/',
-//   }
-// }
-
-// export const TYPES = {
-//   home: HOME,
-//   project: PROJECT,
-//   plan: PLAN,
-//   task: TASK
-// }
-
 export const ALL = {
   VARS,
   CSRF,
@@ -272,14 +119,4 @@ export const ALL = {
   LOGIN,
   LOGOUT,
   REGISTER,
-  // VERIFY,
-  // RECOVER,
-  // ADMIN,
-  TAG,
-  TRACK,
-  // TRACKS,
-  // PLAN,
-  // TASK,
-  // HOME,
-  // TYPES
 }

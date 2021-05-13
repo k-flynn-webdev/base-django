@@ -10,5 +10,5 @@ source .env
 source `which virtualenvwrapper.sh`
 
 workon $APP_ENVIROMENT
-python3 "api/manage.py" runserver "$API_IP:$API_PORT"
+python3 "api/manage.py" runserver --nostatic "$API_IP:$API_PORT"
 
