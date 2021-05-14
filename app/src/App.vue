@@ -1,11 +1,13 @@
 <template>
   <div id="app"
-       class="mini-track p-1">
+       class="p-1"
+       :class="appName">
 
     <message />
 
     <section class="container">
 
+<!--      todo move this into a swap in-out component-->
       <div class="level is-mobile mb-3">
         <router-link
             :to="{ name: 'home' }"
@@ -37,6 +39,10 @@ export default {
     return {
       title: 'Tracks'
     }
+  },
+
+  computed: {
+    appName () { return process.env.APP_NAME }
   },
 
   components: {

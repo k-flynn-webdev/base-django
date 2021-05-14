@@ -13,5 +13,8 @@ def export_vars(request):
     load_dotenv(os.path.join(PARENT_DIR, '.env'))
     data = {}
     data['NAME'] = os.getenv("WEB_NAME")
+    data['APP_NAME'] = os.getenv("APP_NAME")
+    data['APP_AUTHOR'] = os.getenv("APP_AUTHOR")
+    data['APP_DESCRIPTION'] = os.getenv("APP_DESCRIPTION")
     data['SETTING_TYPE'] = os.environ['DJANGO_SETTINGS_MODULE']
     return data

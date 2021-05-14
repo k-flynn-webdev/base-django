@@ -1,0 +1,45 @@
+
+<div class="container px-1 my-2 has-text-primary-light">
+  <nav class="level is-mobile">
+
+    <div class="level-left">
+      <a class="level-item title is-2" href="/">
+        {{ NAME }}
+      </a>
+    </div>
+
+    <div class="level-right">
+      <div class="level-item">
+        <aside class="menu has-text-right" aria-labelledby="userMenu">
+          {% if user.is_authenticated %}
+
+            <p class="menu-label m-0">
+              {{ user.email }}
+            </p>
+
+            <ul class="menu-list m-0">
+              <li><a class="navbar-item" href="{% url 'account_change_password' %}">Change password</a></li>
+              <li><a class="navbar-item" href="{% url 'account_logout' %}">Log out</a></li>
+            </ul>
+
+          {% else %}
+
+            <ul class="menu-list m-0">
+              {% if request.path == '/accounts/login/' %}
+                <li><a class="navbar-item" href="{% url 'account_signup' %}" class="">Sign up</a></li>
+              {% endif %}
+              {% if request.path == '/accounts/signup/' %}
+                <li><a class="navbar-item" href="{% url 'account_login' %}" class="">Log in</a></li>
+              {% endif %}
+            </ul>
+
+          {% endif %}
+        </aside>
+      </div>
+    </div>
+</div>
+
+
+
+
+
