@@ -1,0 +1,14 @@
+/*html {}*/
+.base-01 .level .navbar-item {
+    padding: 0.15rem 0;
+    padding-right: 0.33rem;
+    margin: 0.15rem 0;
+}
+
+.base-01.template .container.is-desktop {
+    max-width: 30rem;
+}
+
+.base-01.template .page-footer .icon.is-medium {
+    height: 1rem;
+}
