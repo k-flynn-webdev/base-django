@@ -1,66 +1,42 @@
 {% extends "account/base.html" %}
 
 {% load i18n %}
-{% load account socialaccount %}
 
 {% block head_title %}{% trans "Login" %}{% endblock %}
+{% block box_title %}{% trans "Login" %}{% endblock %}
 
 {% block content %}
+  <p>{% blocktrans %}If you have not created an account yet, then please
+  <a href="{{ signup_url }}">register</a> first.{% endblocktrans %}</p>
 
+  <form class="my-3" method="POST" action="{% url 'account_login' %}">
+    {% csrf_token %}
 
-{% get_providers as socialaccount_providers %}
-
-{% if socialaccount_providers %}
-<p>{% blocktrans with site.name as site_name %}Please log in with one
-of your existing third party accounts. Or, <a href="{{ signup_url }}">register</a>
-for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
-
-<div class="socialaccount_ballot">
-
-  <ul class="socialaccount_providers">
-    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-  </ul>
-
-  <div class="login-or">{% trans 'or' %}</div>
-
-</div>
-
-{% include "socialaccount/snippets/login_extra.html" %}
-
-{% else %}
-<p>{% blocktrans %}If you have not created an account yet, then please
-<a href="{{ signup_url }}">register</a> first.{% endblocktrans %}</p>
-{% endif %}
-
-<form class="login my-3" method="POST" action="{% url 'account_login' %}">
-  {% csrf_token %}
-
-  <div class="field">
-    <label class="label">Email</label>
-    <div class="control">
-      <input class="input" required type="email" name="login" placeholder="Email address">
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control">
+        <input class="input" required type="email" name="login" placeholder="Email address">
+      </div>
     </div>
-  </div>
 
-  <div class="field">
-    <label class="label">Password</label>
-    <div class="control">
-      <input class="input" required type="password" name="password" placeholder="********">
+    <div class="field">
+      <label class="label">Password</label>
+      <div class="control">
+        <input class="input" required type="password" name="password" placeholder="********">
+      </div>
     </div>
-  </div>
 
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-  {% endif %}
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+    {% endif %}
 
-  <button class="button is-primary" type="submit">
-    {% trans "Login" %}
-  </button>
+    <button class="button is-primary" type="submit">
+      {% trans "Login" %}
+    </button>
 
-</form>
+  </form>
 
-<a class="mt-2" href="{% url 'account_reset_password' %}">
-  {% trans "Forgot Password?" %}
-</a>
-
+  <a href="{% url 'account_reset_password' %}">
+    {% trans "Forgot Password?" %}
+  </a>
 {% endblock %}

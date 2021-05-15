@@ -23,9 +23,19 @@
 
   <div class="container p-1 is-desktop">
     <div class="box">
-      {% block content %}
-        <p>Default content...</p>
-      {% endblock content %}
+      <div class="pb-3">
+
+        <h1 class="is-size-4 mb-3">
+          {% block box_title %}{% endblock %}
+        </h1>
+
+        <div class="mt-3">
+          {% block content %}
+            <p>Default content...</p>
+          {% endblock content %}
+        </div>
+
+      </div>
     </div>
   </div>
 

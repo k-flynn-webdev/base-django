@@ -3,12 +3,12 @@
 {% load i18n %}
 
 {% block head_title %}{% trans "Register" %}{% endblock %}
+{% block box_title %}{% trans "Register" %}{% endblock %}
 
 {% block content %}
-
 <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">login</a>.{% endblocktrans %}</p>
 
-<form class="register my-3" id="signup_form" method="POST" action="{% url 'account_signup' %}">
+<form id="signup_form" method="POST" action="{% url 'account_signup' %}">
   {% csrf_token %}
 
   <div class="field">
@@ -33,5 +33,4 @@
     {% trans "Register" %}
   </button>
 </form>
-
 {% endblock %}
