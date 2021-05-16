@@ -23,6 +23,11 @@ html,
     max-width: 30rem;
 }
 
+.base-01.template .container.is-desktop .errorlist  {
+    list-style: disc;
+    margin-left: 1rem;
+}
+
 .base-01.template .page-footer .icon.is-medium {
     height: 1rem;
 }
