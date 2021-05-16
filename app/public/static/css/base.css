@@ -1,8 +1,22 @@
 /*html {}*/
-.base-01 .level .navbar-item {
-    padding: 0.15rem 0;
-    padding-right: 0.33rem;
-    margin: 0.15rem 0;
+/*.base-01.template .level .navbar-item {*/
+/*    padding: 0.15rem 0;*/
+/*    padding-right: 0.33rem;*/
+/*    margin: 0.15rem 0;*/
+/*}*/
+
+html,
+.base-01.template {
+    background: #202835;
+}
+
+.base-01.template .container.navigation-bar .level .level-item,
+.base-01.template .container.navigation-bar .level .level-item .menu-list a {
+    color: hsl(0, 0%, 96%);
+}
+.base-01.template .container.navigation-bar .level .level-item:hover,
+.base-01.template .container.navigation-bar .level .level-item .menu-list a:hover {
+    color: hsl(0, 0%, 25%);
 }
 
 .base-01.template .container.is-desktop {
@@ -11,4 +25,7 @@
 
 .base-01.template .page-footer .icon.is-medium {
     height: 1rem;
+}
+.base-01.template .page-footer .icon {
+    fill: hsl(0, 0%, 96%);
 }
