@@ -9,11 +9,7 @@
   <form class="my-3" method="POST" action="{% url 'account_email' %}">
     {% csrf_token %}
 
-    <ul class="errorlist mb-3">
-    {% for key, value in form.errors.items %}
-        <li>{% if key != '__all__' %}{{ key }} {% endif %}{{ value }}</li>
-    {% endfor %}
-    </ul>
+    {% include "account/error_partial.html" %}
 
     <p class="mb-3">The following e-mail addresses are associated with your account:</p>
 

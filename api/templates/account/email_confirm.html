@@ -16,6 +16,9 @@
 
     <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
     {% csrf_token %}
+
+      {% include "account/error_partial.html" %}
+
       <button class="button is-primary" type="submit">
         {% trans "Confirm" %}
       </button>

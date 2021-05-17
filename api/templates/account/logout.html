@@ -16,11 +16,7 @@
     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
     {% endif %}
 
-    <ul class="errorlist mb-3">
-    {% for key, value in form.errors.items %}
-        <li>{% if key != '__all__' %}{{ key }} {% endif %}{{ value }}</li>
-    {% endfor %}
-    </ul>
+    {% include "account/error_partial.html" %}
 
     <button class="button is-primary" type="submit">
       {% trans "Logout" %}
