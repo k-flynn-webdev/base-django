@@ -25,11 +25,10 @@
           {% else %}
 
             <ul class="menu-list m-0">
-              {% if request.path == '/accounts/login/' %}
-                <li><a class="navbar-item" href="{% url 'account_signup' %}" class="">Sign up</a></li>
-              {% endif %}
               {% if request.path == '/accounts/signup/' %}
                 <li><a class="navbar-item" href="{% url 'account_login' %}" class="">Log in</a></li>
+              {% else %}
+                <li><a class="navbar-item" href="{% url 'account_signup' %}" class="">Sign up</a></li>
               {% endif %}
             </ul>
 
