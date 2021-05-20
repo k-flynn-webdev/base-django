@@ -1,9 +1,16 @@
 /*html {}*/
-/*.base-01.template .level .navbar-item {*/
-/*    padding: 0.15rem 0;*/
-/*    padding-right: 0.33rem;*/
-/*    margin: 0.15rem 0;*/
-/*}*/
+.base-01.template .navigation-bar .level ul li {
+    padding: 0.15rem 0;
+    margin-top: 0.15rem;
+}
+.base-01.template .navigation-bar .level ul li:first-of-type {
+    margin-top: 0;
+}
+.base-01.template .navigation-bar .level ul li .navbar-item {
+    margin: 0;
+    padding: 0;
+    padding-right: 0.33rem;
+}
 
 html,
 .base-01.template {

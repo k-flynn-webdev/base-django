@@ -28,6 +28,15 @@
     </div>
   </div>
 
+  {% if ACCOUNT_SESSION_REMEMBER == None %}
+  <div class="field mt-3 mb-5">
+    <label class="checkbox">
+      <input type="checkbox" name="remember" checked>
+      Remember me
+    </label>
+  </div>
+  {% endif %}
+
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}

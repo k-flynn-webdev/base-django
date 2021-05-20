@@ -36,9 +36,9 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # SECURITY
 SITE_ID = 1
 SECRET_KEY = os.getenv("APP_SECRET")
+CSRF_HEADER_NAME = 'HTTP_X_CSRFTOKEN'
 CSRF_COOKIE_HTTPONLY = False        # todo: this breaks the vue spa in develop when true
 CSRF_COOKIE_SAMESITE = 'Strict'
-CSRF_HEADER_NAME = 'HTTP_X_CSRFTOKEN'
 SESSION_COOKIE_AGE = 1209600
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = 'Strict'
@@ -56,16 +56,18 @@ if os.getenv("APP_MODE") == 'PRODUCTION':
 # USER
 AUTH_USER_MODEL = 'users.CustomUser'
 # ALLAUTH
-ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_SESSION_REMEMBER = None  # User must allow "remember" cookie on login!
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+ACCOUNT_SIGNUP_PASSWORD_VERIFICATION = False
 
 LOGIN_URL = os.getenv("WEB_ADDRESS_LOGIN")
 LOGIN_REDIRECT_URL = os.getenv("WEB_ADDRESS")
 ACCOUNT_LOGOUT_ON_GET = False
+
 
 # Application definition
 INSTALLED_APPS = [
@@ -98,9 +100,9 @@ INSTALLED_APPS = [
     'users',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -108,6 +110,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# ALLOW STATIC SERVE !DEBUG ONLY!
+if os.getenv("APP_MODE") == 'DEBUG':
+    MIDDLEWARE.insert(2, 'whitenoise.middleware.WhiteNoiseMiddleware')
+
 
 TEMPLATES = [
     {
@@ -164,16 +171,12 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 30,
 }
 
-
-# ALLOW BROWSABLE API
-if os.getenv("APP_MODE") != 'PRODUCTION':
-    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = [
-        'rest_framework.renderers.JSONRenderer',
-        'rest_framework.renderers.BrowsableAPIRenderer',
-    ]
+# ALLOW BROWSABLE API !DEBUG ONLY!
+if os.getenv("APP_MODE") == 'DEBUG':
+    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] += 'rest_framework.renderers.BrowsableAPIRenderer',
 
 REST_AUTH_SERIALIZERS = {
-    # 'USER_DETAILS_SERIALIZER': 'users.serializers.UserSerializer',
+    'USER_DETAILS_SERIALIZER': 'users.serializers.UserSerializer',
 }
 
 

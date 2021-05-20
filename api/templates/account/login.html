@@ -17,7 +17,7 @@
     <div class="field">
       <label class="label">Email</label>
       <div class="control">
-        <input class="input" required type="email" name="email" placeholder="Email address">
+        <input class="input" required type="email" name="login" placeholder="Email address">
       </div>
     </div>
 
@@ -27,6 +27,18 @@
         <input class="input" required type="password" name="password" placeholder="********">
       </div>
     </div>
+
+    {% if ACCOUNT_SESSION_REMEMBER == None %}
+    <div class="field mt-3 mb-5">
+      <label class="checkbox">
+        <input type="checkbox" name="remember" checked>
+        Remember me
+      </label>
+    </div>
+    {% endif %}
+
+
+    <!--    ACCOUNT_SESSION_REMEMBER-->
 
     {% if redirect_field_value %}
     <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
