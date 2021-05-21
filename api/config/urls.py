@@ -22,7 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('api/csrf', include('csrf.urls')),
-    path('', include('users.urls')),
+    path('', include('user.urls')),
 ]
               # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 # if settings.DEBUG:

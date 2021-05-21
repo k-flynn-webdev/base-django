@@ -1,11 +1,7 @@
-from django.http import HttpResponse
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .serializers import CustomUserSerializer
-from .models import CustomUser
 
 
 class WhoAmIView(APIView):
@@ -13,10 +9,11 @@ class WhoAmIView(APIView):
     # permission_classes = [IsAuthenticated]
     permission_classes = []
 
-    def get(self, request, format=None):
+    @staticmethod
+    def get(request, format=None):
         try:
             request.user.meta
-        except:
+        except Exception as e:
             return Response({
                 'detail': 'No user logged in.',
                 'data': {}
