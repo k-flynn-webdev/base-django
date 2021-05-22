@@ -32,14 +32,17 @@
 
 export default {
   name: 'PageFooter',
+
   computed: {
     version: function () {
       return process.env.VUE_APP_VERSION || '0.0.0'
     }
   },
+
   mounted () {
     document.body.appendChild(this.$refs.footer)
   },
+
   beforeDestroy () {
     document.body.removeChild(this.$refs.footer)
     this.$refs.parent.appendChild(this.$refs.footer)

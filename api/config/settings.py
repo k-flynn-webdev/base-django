@@ -113,7 +113,15 @@ MIDDLEWARE = [
 
 # ALLOW STATIC SERVE !DEBUG ONLY!
 if os.getenv("APP_MODE") == 'DEBUG':
-    MIDDLEWARE.insert(2, 'whitenoise.middleware.WhiteNoiseMiddleware')
+    MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+    # STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+    # Add app before django.contrib.staticfiles to enable Whitenoise in development
+    # insert_point = -1
+    # for i, app in enumerate(INSTALLED_APPS):
+    #     if app == 'django.contrib.staticfiles':
+    #         insert_point = i
+    # INSTALLED_APPS.insert(insert_point, 'whitenoise.runserver_nostatic')
 
 
 TEMPLATES = [

@@ -59,6 +59,7 @@ export default {
     this.$message.register(this.items)
     document.body.prepend(this.$el)
   },
+
   beforeDestroy () {
     this.$message.unregister(this.items)
     document.body.removeChild(this.$el)
