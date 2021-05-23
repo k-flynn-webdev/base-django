@@ -1,23 +1,25 @@
-// todo : Add default func objects in each object
-
 export const VARS = {
-  name: 'BASE',
-  pageLimit: 20,
-  sort: {
-    direction: [
-      { name: 'asc', value: 1 },
-      { name: 'desc', value: -1 }
-      ],
-    types: [
-      { name: 'created', value: 'created_at' },
-      { name: 'updated', value: 'updated_at' },
-    ]
+  name: process.env.WEB_NAME || 'BASE',
+  pageCount: 20,
+}
+
+export const SORT_OPTIONS = {
+  value: 'sort',
+  store: null,
+  direction: {
+    asc: { label: 'asc', value: 1 },
+    desc: { label: 'desc', value: -1 }
   },
-  userLocal: 'user-local'
+  options: {
+    created: { label: 'created', value: 'created_at' },
+    updated: { label: 'updated', value: 'updated_at' },
+    deleted: { label: 'deleted', value: 'deleted_at' },
+  },
 }
 
 export const CSRF = {
   value: 'csrf',
+  store: 'csrf',
   API: {
     GET: '/api/csrf',
   }
@@ -80,26 +82,23 @@ export const LOGOUT = {
   }
 }
 
+/**
+ * Used to get current logged in users details directly from the server API
+ */
 export const USER = {
   value: 'user',
   store: 'user',
-  route: { name: 'user', path: '/user' },
+  cookie: 'user-local',
   API: {
     GET: '/api/whoami'
   }
 }
 
-// export const ADMIN = {
-//   value: 'admin',
-//   store: 'admin',
-//   route: { name: 'admin', path: '/admin' },
-//   API: {
-//     GET: '/config/admin/me',
-//     POST: '/config/admin',
-//     PATCH: '/config/admin',
-//     DELETE: '/config/admin',
-//   }
-// }
+export const ADMIN = {
+  value: 'admin',
+  store: 'admin',
+  route: { name: 'admin', href: '/admin' },
+}
 
 /**
  * @typedef {object}    Track

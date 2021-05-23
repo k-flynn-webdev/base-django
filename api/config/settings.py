@@ -54,7 +54,7 @@ if os.getenv("APP_MODE") == 'PRODUCTION':
 
 
 # USER
-AUTH_USER_MODEL = 'users.CustomUser'
+AUTH_USER_MODEL = 'user.CustomUser'
 # ALLAUTH
 ACCOUNT_SESSION_REMEMBER = None  # User must allow "remember" cookie on login!
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
@@ -97,7 +97,7 @@ INSTALLED_APPS = [
 
     # CUSTOM
     'csrf',
-    'users',
+    'user',
 ]
 
 
@@ -113,13 +113,24 @@ MIDDLEWARE = [
 
 # ALLOW STATIC SERVE !DEBUG ONLY!
 if os.getenv("APP_MODE") == 'DEBUG':
-    MIDDLEWARE.insert(2, 'whitenoise.middleware.WhiteNoiseMiddleware')
+    MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+    # STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+    # Add app before django.contrib.staticfiles to enable Whitenoise in development
+    # insert_point = -1
+    # for i, app in enumerate(INSTALLED_APPS):
+    #     if app == 'django.contrib.staticfiles':
+    #         insert_point = i
+    # INSTALLED_APPS.insert(insert_point, 'whitenoise.runserver_nostatic')
 
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'user', 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -129,7 +140,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
 
                 # ADD ENV VARS
-                'custom.context_processors.export_vars',
+                'user.context_processors.template_vars',
             ],
         },
     },
@@ -176,7 +187,7 @@ if os.getenv("APP_MODE") == 'DEBUG':
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] += 'rest_framework.renderers.BrowsableAPIRenderer',
 
 REST_AUTH_SERIALIZERS = {
-    'USER_DETAILS_SERIALIZER': 'users.serializers.UserSerializer',
+    'USER_DETAILS_SERIALIZER': 'user.serializers.UserSerializer',
 }
 
 

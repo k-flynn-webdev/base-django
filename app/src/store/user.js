@@ -52,7 +52,7 @@ const mutations = {
 const actions = {
   /**
    * Get User details via API
-   *  User must be loggedin first 'whoami'
+   *  User must be logged in first `whoami`
    *
    * @param {object}  context
    * @return {Promise}

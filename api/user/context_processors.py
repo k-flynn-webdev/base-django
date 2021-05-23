@@ -8,9 +8,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 PARENT_DIR = Path(__file__).resolve().parent.parent.parent
 
 """
-Expose Vars for templates here
+Expose Vars for `User` templates here
 """
-def export_vars(request):
+def template_vars(request):
     load_dotenv(os.path.join(PARENT_DIR, '.env'))
     data = {}
     data['NAME'] = os.getenv("WEB_NAME")
