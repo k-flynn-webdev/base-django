@@ -17,7 +17,7 @@ const opts = {
 /**
  * Generate a Id string
  *
- * @param {string}    input
+ * @param {string}    input   Text message input
  * @returns {string}  hash
  */
 const generateId = (input) => {
@@ -31,14 +31,15 @@ const generateId = (input) => {
 /**
  * Add a message to the local stack
  *
- * @param {Message}  msg
+ * @param {Message}  msg  Message to create
+ * @returns {Boolean}     If a message was created
  */
 const createMessage = (msg) => {
   msg.id = generateId(msg.message)
   msg.closeable = msg.closeable || true
 
   for(let i = 0; i < opts.items.length; i++ ) {
-    if (opts.items[i].id === msg.id) return
+    if (opts.items[i].id === msg.id) return false
   }
 
   opts.items.push(msg)
@@ -49,6 +50,8 @@ const createMessage = (msg) => {
       removeMessage(msg)
     }, msg.timeDisplay * 1000)
   }
+
+  return true
 }
 /**
  * Add a message to be displayed
@@ -78,15 +81,17 @@ const addDelayedMessage = (msg, delay = 1) => {
 /**
  * Remove message from the local stack
  *
- * @param {Message}  msg
+ * @param {Message}   msg
+ * @returns {Boolean}       If a message was removed
  */
 const removeMessage = (msg) => {
   for (let i = 0, max = opts.items.length; i < max; i++) {
     if (opts.items[i].id === msg.id) {
       opts.items.splice(i,1)
-      return
+      return true
     }
   }
+  return false
 }
 
 const MessagePlugin = {

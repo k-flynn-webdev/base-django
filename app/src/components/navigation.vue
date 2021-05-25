@@ -3,7 +3,7 @@
 
     <router-link
         :to="{ name: 'home' }"
-        class="title has-text-white level-item">
+        class="title has-text-white level-item home">
       {{ $route.meta.title }}
     </router-link>
 
