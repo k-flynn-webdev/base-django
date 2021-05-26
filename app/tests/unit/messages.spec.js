@@ -1,9 +1,9 @@
 import { expect } from 'chai'
 import { shallowMount } from '@vue/test-utils'
-import Messages from '@/components/messages.vue'
+import Messages from '@/components/message.vue'
 
 // todo more tests
-describe('Messages.vue', () => {
+describe('Message.vue', () => {
   it('renders a div')
   it('renders a message')
   it('renders multiple messages')

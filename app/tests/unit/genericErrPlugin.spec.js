@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import { shallowMount } from '@vue/test-utils'
-import GenericErrPlugin from '@/plugins/genericErrPlugin.vue'
+import GenericErrPlugin from '@/plugins/genericErrPlugin.js'
 
 // todo more tests
 describe('GenericErrPlugin.js', () => {
