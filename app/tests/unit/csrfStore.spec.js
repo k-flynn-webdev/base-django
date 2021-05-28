@@ -27,8 +27,6 @@ describe('CsrfStore.vue', () => {
     expect(store.state.token).to.equal('test')
     expect(new Date(store.state.CSRF_requested_at).toDateString().length).to.above(5)
   })
-  it('makes a api call to the csrf endpoint', () => {
-    // console.log(store.dispatch('get'))
-  })
+  it('makes a api call to the csrf endpoint')
   it('if a token was recently requested it should NOT make another call to the csrf endpoint')
 })
