@@ -36,7 +36,6 @@ export default {
 
   data () {
     return {
-      loading: false,
       url_login: LOGIN.route.path,
       url_logout: LOGOUT.route.path,
     }

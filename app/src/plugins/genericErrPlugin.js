@@ -14,7 +14,8 @@ export const genericErrMixin = {
     }
 }
 
-// to do: Currently broken
+// todo : Currently broken
+// todo : Tests
 export const genericErrPlugin = {
     install(Vue, options) {
         Vue.$handleErr = (err) => {

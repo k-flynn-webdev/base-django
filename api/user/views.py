@@ -21,7 +21,7 @@ class WhoAmIView(APIView):
 
         serializer = CustomUserSerializer(request.user)
         return Response({
-            'detail': 'success',
+            'detail': 'User found.',
             'data': serializer.data
         })
 

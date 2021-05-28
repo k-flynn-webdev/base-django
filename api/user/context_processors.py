@@ -13,10 +13,10 @@ Expose Vars for `User` templates here
 def template_vars(request):
     load_dotenv(os.path.join(PARENT_DIR, '.env'))
     data = {}
-    data['NAME'] = os.getenv("WEB_NAME")
-    data['APP_NAME'] = os.getenv("APP_NAME")
-    data['APP_AUTHOR'] = os.getenv("APP_AUTHOR")
-    data['APP_DESCRIPTION'] = os.getenv("APP_DESCRIPTION")
+    data['NAME'] = os.getenv("WEB_NAME", 'NAME')
+    data['APP_NAME'] = os.getenv("APP_NAME", 'APP_NAME')
+    data['APP_AUTHOR'] = os.getenv("APP_AUTHOR", 'APP_AUTHOR')
+    data['APP_DESCRIPTION'] = os.getenv("APP_DESCRIPTION", 'APP_DESCRIPTION')
     data['SETTING_TYPE'] = os.environ['DJANGO_SETTINGS_MODULE']
     data['ACCOUNT_SESSION_REMEMBER'] = getattr(settings, "ACCOUNT_SESSION_REMEMBER", None)
     return data
