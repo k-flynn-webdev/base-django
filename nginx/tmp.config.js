@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'app-minitrack',
-      script: '../productio/api_production_run.sh',
+      script: '../env_prod/start.sh',
       env: {
         NODE_ENV: 'production',
       },
