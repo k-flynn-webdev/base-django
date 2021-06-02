@@ -1,7 +1,7 @@
 <template>
-  <div class="">
-    <div v-if="isLoggedIn">
-      <span class="mr-2">{{ userName }}</span>
+  <div>
+    <div v-if="isLoggedIn" class="has-text-right">
+      <div class="is-uppercase email">{{ userEmail }}</div>
       <a :href="url_logout.href" class="button is-success is-smaller">
         <cross-icon :class-items="'close'" />
       </a>
@@ -45,8 +45,11 @@ export default {
     userName () {
       return this.$store.state[USER.store].username
     },
+    userEmail () {
+      return this.$store.state[USER.store].email
+    },
     isLoggedIn () {
-      return !!this.$store.state[USER.store].email
+      return !!this.userEmail
     }
   }
 }

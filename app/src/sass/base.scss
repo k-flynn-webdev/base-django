@@ -1,10 +1,18 @@
 @import "build/app_vars";
 
-html { background: #202835; }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+
+html {
+    background: #202835;
+}
 
 .#{$base-class-name},
 .#{$base-class-name}.template {
+    font-family: 'Poppins', sans-serif;
+
     .navigation-bar .level {
+        .email { font-size: 0.9rem; }
+
         ul li {
             padding: 0.15rem 0;
             margin-top: 0.15rem;
@@ -20,6 +28,7 @@ html { background: #202835; }
         }
 
         .level-item {
+            .menu-label,
             .menu-list a {
                 color: hsl(0, 0%, 96%);
             }
