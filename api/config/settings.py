@@ -35,7 +35,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # SECURITY
 SITE_ID = 1
-SECRET_KEY = os.getenv("APP_SECRET")
+SECRET_KEY = os.getenv("SECURE_SECRET")
 CSRF_HEADER_NAME = 'HTTP_X_CSRFTOKEN'
 CSRF_COOKIE_HTTPONLY = False        # todo: this breaks the vue spa in develop when true
 CSRF_COOKIE_SAMESITE = 'Strict'
@@ -57,16 +57,16 @@ if os.getenv("APP_MODE") == 'PRODUCTION':
 AUTH_USER_MODEL = 'user.CustomUser'
 # ALLAUTH
 ACCOUNT_SESSION_REMEMBER = None  # User must allow "remember" cookie on login!
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
 ACCOUNT_SIGNUP_PASSWORD_VERIFICATION = False
 
-LOGIN_URL = os.getenv("WEB_ADDRESS_LOGIN")
-LOGIN_REDIRECT_URL = os.getenv("WEB_ADDRESS")
 ACCOUNT_LOGOUT_ON_GET = False
+LOGIN_URL = os.getenv("URL_ACCOUNTS_LOGIN")
+LOGIN_REDIRECT_URL = os.getenv("URL_ACCOUNTS_LOGIN_REDIRECT")
 
 
 # Application definition
@@ -78,7 +78,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sites',
     'django.contrib.staticfiles',
-
     # 'django.contrib.auth.backends.ModelBackend',
 
     # MAIL
@@ -92,8 +91,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    # 'dj_rest_auth',
-    # 'dj_rest_auth.registration',
 
     # CUSTOM
     'csrf',
@@ -114,14 +111,6 @@ MIDDLEWARE = [
 # ALLOW STATIC SERVE !DEBUG ONLY!
 if os.getenv("APP_MODE") == 'DEBUG':
     MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
-    # STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-    # Add app before django.contrib.staticfiles to enable Whitenoise in development
-    # insert_point = -1
-    # for i, app in enumerate(INSTALLED_APPS):
-    #     if app == 'django.contrib.staticfiles':
-    #         insert_point = i
-    # INSTALLED_APPS.insert(insert_point, 'whitenoise.runserver_nostatic')
 
 
 TEMPLATES = [

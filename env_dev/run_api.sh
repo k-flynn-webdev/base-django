@@ -9,6 +9,6 @@ pwd
 source .env
 source `which virtualenvwrapper.sh`
 
-workon $APP_ENVIROMENT
+workon $APP_PYTHON_ENVIROMENT
 python3 "api/manage.py" runserver --nostatic "$API_IP:$API_PORT"
 

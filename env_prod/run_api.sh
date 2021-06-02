@@ -12,6 +12,6 @@ source `which virtualenvwrapper.sh`
 cd ../api
 pwd
 
-workon $APP_ENVIROMENT
+workon $APP_PYTHON_ENVIROMENT
 uwsgi --socket $API_IP:$API_PORT --protocol=http -w main.wsgi:application
 

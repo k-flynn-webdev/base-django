@@ -1,5 +1,3 @@
-## Look into jinja templates to make a build script for this ##
-
 server {
 		gzip on;
 		gzip_disable "msie6";
@@ -9,19 +7,19 @@ server {
 		listen 80;
 		listen [::]:80;
 
-		root /home/user01/base-01/static;
+		root /home/user01/base-01/static/;
 		index index.html index.htm index.nginx-debian.html;
 
 		access_log /var/log/nginx/base-01.log;
 		error_log /var/log/nginx/base-01.error.log;
 
-		server_name base.kubedev.co.uk www.base.kubedev.co.uk;
+		server_name xxx.kubedev.co.uk www.xxx.kubedev.co.uk;
 
 		location / {
 			try_files  /index.html;
 		}
 
-		location /static {
+		location /static/ {
 			 root /home/user01/base-01;
 		}
 
@@ -49,8 +47,8 @@ server {
 			proxy_set_header    X-Forwarded-Host ;
 		}
 
-		location /admin/ {
-			proxy_pass 			http://127.0.0.1:8700;
+		location /accounts/admin/ {
+			proxy_pass 		    http://127.0.0.1:8700;
 			proxy_http_version  1.1;
 			proxy_redirect      default;
 			proxy_set_header    Upgrade ;

@@ -7,11 +7,9 @@ dir_project=$nginx/..;
 ## VARS
 source $dir_project/.env
 
-export APP_NAME=$APP_NAME
-export API_IP=$API_IP
-export API_PORT=$API_PORT
-export APP_IP=$APP_IP
-export APP_PORT=$APP_PORT
-export WEB_URL=$WEB_URL
+export URL_WEB=$URL_WEB
+export APP_NAME_SHORT=$APP_NAME_SHORT
+export APP_NAME_FULL=$APP_NAME_FULL
+export API_ADDRESS=$API_ADDRESS
 
-envsubst < $nginx/nginx.template > $WEB_URL
+envsubst < $nginx/nginx.template > $URL_WEB

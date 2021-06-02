@@ -19,5 +19,5 @@ from . import views
 
 
 urlpatterns = [
-    path('api/whoami', views.WhoAmIView.as_view(), name='api-who-am-i'),
+    path('', views.WhoAmIView.as_view(), name='api-who-am-i'),
 ]

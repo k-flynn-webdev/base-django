@@ -17,7 +17,7 @@ module.exports = {
         ws: false,
       },
       '^/accounts': {
-        // target: process.env.ACCOUNTS_ADDRESS,
+        // target: process.env.URL_ACCOUNTS,
         target: 'http://127.0.0.1:8700',
         changeOrigin: true,
         ws: false,

@@ -8,4 +8,4 @@ dir_project=$dir_project_build/..;
 source $dir_project/.env
 
 # Add Build Watcher to PM2 processes
-pm2 start npm --name "$WEB_NAME-build" -- start
+pm2 start npm --name "${APP_NAME_FULL}-build" -- start

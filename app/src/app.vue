@@ -33,7 +33,7 @@ export default {
   },
 
   computed: {
-    appName () { return process.env.APP_NAME || 'BASE' }
+    appName () { return process.env.APP_NAME_SHORT || 'BASE' }
   },
 
 }

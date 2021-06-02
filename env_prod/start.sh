@@ -8,8 +8,8 @@ dir_project=$dir_project_production/..;
 source $dir_project/.env
 
 # Add App to PM2 processes
-pm2 start ./run_api_production.sh --name "$WEB_NAME-app"
+pm2 start ./run_api_production.sh --name "${APP_NAME_FULL}-app"
 
 # Add Auto-Build to PM2 processes - based on a timed git HEAD diff
 cd ../builder;
-pm2 start npm --name "$WEB_NAME-builder" -- start
+pm2 start npm --name "${APP_NAME_FULL}-builder" -- start

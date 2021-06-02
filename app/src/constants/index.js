@@ -1,5 +1,5 @@
 export const VARS = {
-  name: process.env.WEB_NAME || 'BASE',
+  name: process.env.APP_NAME_SHORT || 'BASE',
   pageCount: 20,
 }
 
@@ -21,7 +21,7 @@ export const CSRF = {
   value: 'csrf',
   store: 'csrf',
   API: {
-    GET: '/api/csrf',
+    GET: '/api/csrf/',
   }
 }
 
@@ -90,14 +90,14 @@ export const USER = {
   store: 'user',
   cookie: 'user-local',
   API: {
-    GET: '/api/whoami'
+    GET: '/api/whoami/'
   }
 }
 
 export const ADMIN = {
   value: 'admin',
   store: 'admin',
-  route: { name: 'admin', href: '/admin' },
+  route: { name: 'admin', href: '/accounts/admin' },
 }
 
 /**

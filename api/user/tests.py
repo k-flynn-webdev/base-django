@@ -20,9 +20,10 @@ class BasicTests(TestCase):
     def test_template_vars(self):
         vars = template_vars(None)
         self.assertTrue(vars['NAME'])
-        self.assertTrue(vars['APP_NAME'])
-        self.assertTrue(vars['APP_AUTHOR'])
-        self.assertTrue(vars['APP_DESCRIPTION'])
+        self.assertTrue(vars['APP_NAME_SHORT'])
+        self.assertTrue(vars['APP_NAME_FULL'])
+        self.assertTrue(vars['META_AUTHOR'])
+        self.assertTrue(vars['META_DESCRIPTION'])
 
     def test_whoami_with_user(self):
         response = self.client.get('/api/whoami')
