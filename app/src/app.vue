@@ -1,7 +1,7 @@
 <template>
   <div id="app"
        class="p-1"
-       :class="appName">
+       :class="appNameLong">
 
     <message />
 
@@ -33,7 +33,7 @@ export default {
   },
 
   computed: {
-    appName () { return process.env.APP_NAME_SHORT || 'BASE' }
+    appNameLong () { return process.env.VUE_APP_NAME_FULL || 'BASE' }
   },
 
 }

@@ -1,9 +1,9 @@
-$app-name-full: "base-01";
+@import "build/app_vars";
 
 html { background: #202835; }
 
-.#{$app-name-full},
-.#{$app-name-full}.template {
+.#{$base-class-name},
+.#{$base-class-name}.template {
     .navigation-bar .level {
         ul li {
             padding: 0.15rem 0;

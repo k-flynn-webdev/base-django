@@ -1,5 +1,5 @@
 <template>
-  <div ref="message-holder" class="mini-track messages">
+  <div ref="message-holder" class="messages" :class="appNameLong">
     <div
         v-for="item in items"
         :key="item.id"
@@ -50,6 +50,7 @@ export default {
   },
 
   computed: {
+    appNameLong () { return process.env.VUE_APP_NAME_FULL || 'BASE' },
     messages () {
       return this.$message.items
     }

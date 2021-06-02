@@ -16,6 +16,7 @@ source $dir_project/.env
 
 ## APP
 cd $dir_project_app
+sh ./src/sass/build/build.sh
 npm run build-base-css
 npm run build
 

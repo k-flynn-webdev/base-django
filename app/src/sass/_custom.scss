@@ -3,7 +3,7 @@ html {
   background-color: $color-bg;
 }
 
-.mini-track {
+.#{$base-class-name} {
   font-family: 'Poppins', sans-serif;
   color: $color-text;
   min-height: 40rem;
