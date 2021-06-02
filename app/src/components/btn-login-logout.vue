@@ -2,12 +2,12 @@
   <div class="">
     <div v-if="isLoggedIn">
       <span class="mr-2">{{ userName }}</span>
-      <a :href="url_logout" class="button is-success is-smaller">
+      <a :href="url_logout.href" class="button is-success is-smaller">
         <cross-icon :class-items="'close'" />
       </a>
     </div>
 
-    <a :href="url_login" v-else >
+    <a :href="url_login.href" v-else >
       Login
     </a>
   </div>
@@ -36,8 +36,8 @@ export default {
 
   data () {
     return {
-      url_login: LOGIN.route.path,
-      url_logout: LOGOUT.route.path,
+      url_login: LOGIN.route,
+      url_logout: LOGOUT.route,
     }
   },
 

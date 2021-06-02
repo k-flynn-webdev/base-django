@@ -2,6 +2,8 @@ require('dotenv-expand')(require('dotenv').config({ path: `../.env` }))
 
 process.env.VUE_APP_VERSION = require('./package.json').version
 process.env.VUE_APP_NAME = process.env.APP_NAME_FULL
+process.env.VUE_APP_AUTHOR = process.env.META_AUTHOR
+process.env.VUE_APP_DESCRIPTION = process.env.META_DESCRIPTION
 
 module.exports = {
   devServer: {

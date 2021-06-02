@@ -1,9 +1,9 @@
-/*html {}*/
+$app-name-full: "base-01";
 
 html { background: #202835; }
 
-.base-01,
-.base-01.template {
+.#{$app-name-full},
+.#{$app-name-full}.template {
     .navigation-bar .level {
         ul li {
             padding: 0.15rem 0;

@@ -49,7 +49,7 @@ function checkPassword (input) {
 
 export const REGISTER = {
   value: 'signup',
-  route: { name: 'signup', path: '/accounts/signup' },
+  route: { name: 'signup', href: '/accounts/signup' },
   API: {
     GET: '/accounts/signup',
     POST: '/accounts/signup'
@@ -65,7 +65,7 @@ export const REGISTER = {
 
 export const LOGIN = {
   value: 'login',
-  route: { name: 'login', path: '/accounts/login/' },
+  route: { name: 'login', href: '/accounts/login/' },
   API: {
     GET: '/accounts/login',
     POST: '/accounts/login'
@@ -75,7 +75,7 @@ export const LOGIN = {
 
 export const LOGOUT = {
   value: 'logout',
-  route: { name: 'logout', path: '/accounts/logout/' },
+  route: { name: 'logout', href: '/accounts/logout/' },
   API: {
     GET: '/accounts/logout',
     POST: '/accounts/logout'
@@ -97,7 +97,7 @@ export const USER = {
 export const ADMIN = {
   value: 'admin',
   store: 'admin',
-  route: { name: 'admin', href: '/accounts/admin' },
+  route: { name: 'admin', href: '/accounts/admin/' },
 }
 
 /**
