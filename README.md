@@ -18,4 +18,7 @@ Simple starter django project to get started with:
 - [_]️ Logging by xx?
 - [_]️ Updated Admin interface
 
-
+FAQ:
+- 
+    q: Cant login to app via template files?
+    a: Might already be logged in as the admin vi /accounts/admin/ , logout of admin and try again

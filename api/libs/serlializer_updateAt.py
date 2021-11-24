@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.utils import timezone
 
-locked_fields = ['id', 'owner', 'sheet', 'project']
+locked_fields = ['id', 'createdBy']
 
 
 class CustomSerializerUpdatedAt(serializers.ModelSerializer):
