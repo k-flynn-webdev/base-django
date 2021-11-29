@@ -22,7 +22,7 @@
 
 <script>
 import navigation from '@/components/navigation'
-import pageFooter from '@/components/pageFooter'
+import pageFooter from '@/components/page-footer'
 
 export default {
   name: 'app',
