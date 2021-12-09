@@ -7,7 +7,7 @@
 
     <div class="container">
 
-      <navigation />
+      <navBar />
 
       <div class="columns is-centered">
         <router-view />
@@ -21,19 +21,21 @@
 </template>
 
 <script>
-import navigation from '@/components/navigation'
 import pageFooter from '@/components/page-footer'
+import navBar from '@/components/nav/navigation-bar'
 
 export default {
   name: 'app',
 
   components: {
-    navigation,
+    navBar,
     pageFooter
   },
 
   computed: {
-    appNameLong () { return process.env.VUE_APP_NAME_FULL || 'BASE' }
+    appNameLong () {
+      return process.env.VUE_APP_NAME_FULL || 'BASE'
+    }
   },
 
 }

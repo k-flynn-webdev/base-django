@@ -7,18 +7,18 @@
       {{ $route.meta.title }}
     </router-link>
 
-    <btn-login-logout class="level-right" />
+    <nav-login class="level-right" />
   </div>
 </template>
 
 <script>
-import btnLoginLogout from '@/components/btn-login-logout'
+import navLogin from '@/components/nav/navigation-login.vue'
 
 export default {
   name: 'navigation',
 
   components: {
-    btnLoginLogout,
+    navLogin,
   }
 }
 </script>
