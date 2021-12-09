@@ -29,7 +29,7 @@ import { genericErrMixin } from '@/plugins/genericErrPlugin'
 
 
 export default {
-  name: 'btn-login-logout',
+  name: 'navigation-login',
 
   components: { crossIcon },
 
