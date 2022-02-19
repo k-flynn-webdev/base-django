@@ -10,7 +10,7 @@ localVue.use(Vuex)
 
 
 // todo more tests
-describe('CsrfStore.vue', () => {
+describe('Store - csrf.js', () => {
   let actions
   let store
 

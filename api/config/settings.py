@@ -199,7 +199,8 @@ REST_AUTH_SERIALIZERS = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3'    }
+        'NAME': BASE_DIR / 'db.sqlite3'
+    }
 }
 
 
@@ -232,7 +233,7 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
+TIME_ZONE = 'Europe/Paris'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -241,6 +242,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(PARENT_DIR, 'static')
+STATIC_CSS_FILES = os.path.join(PARENT_DIR, 'static', os.getenv("APP_NAME_SHORT"))
 
 # Vue project location
 APP_DIR = os.path.join(PARENT_DIR, 'app')

@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import { shallowMount } from '@vue/test-utils'
-import BtnLoginLogout from '@/components/btn-login-logout.vue'
+import navigationLogin from '@/components/nav/navigation-login.vue'
 
 // todo more tests
 describe('BtnLoginLogout.vue', () => {

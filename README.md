@@ -5,12 +5,14 @@ Combining a VueJS front-end and a static User auth pages via Django Templates.
 
 Simple starter django project to get started with:
 - ✅ Django
-- ✅ DRF API
-- ✅ Django All-Auth 
-- ✅ Static User pages (redirect from front-end -> back-end)
-- ✅ Custom User
-- ✅ Mailgun for email
-- ✅ VueJs decoupled front
+    - ✅ All-Auth 
+    - ✅ Session Authentication() 
+    - ✅ DRF API
+    - ✅ Static User Login page
+    - ✅ Customisable User
+    - ✅ Email - Mailgun
+- ✅ VueJs
+    - ✅ Bulma CSS framework 
 - [_]️ Mysql DB - todo - change to maria or postgress
 - [_]️ Celery? || other? Worker
 - [_]️ CI/CD auto setup
@@ -18,4 +20,7 @@ Simple starter django project to get started with:
 - [_]️ Logging by xx?
 - [_]️ Updated Admin interface
 
-
+FAQ:
+- 
+    q: Cant login with correct details?
+    a: Possibly already logged in as the admin via /accounts/admin/ , logout of admin and login again as a user

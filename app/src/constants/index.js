@@ -1,3 +1,18 @@
+/**
+ * @typedef {object}    ItemConfig    An object config to track a number of related things to an item
+ *
+ * @property {string}   value     api name
+ * @property {string}   store     store name
+ * @property {string}   route     route name
+ * @property {object}   API       api endpoints {list, get, post, patch, delete}
+ * @property {object}   views     view names and `props` required {list, view, create, update}
+ * @property {function} isValid   check if a object is valid to create the item
+ * @property {function} init      create a item
+ *
+ * @returns {Object}
+ */
+
+
 export const VARS = {
   name: process.env.APP_NAME_SHORT || 'BASE',
   pageCount: 20,
@@ -47,39 +62,19 @@ function checkPassword (input) {
   return (input && input.length >= 8)
 }
 
-export const REGISTER = {
-  value: 'signup',
-  route: { name: 'signup', href: '/accounts/signup' },
-  API: {
-    GET: '/accounts/signup',
-    POST: '/accounts/signup'
-  },
-  isValid: (input) => {
-    return (input &&
-        input.email &&
-        input.password &&
-        checkEmail(input.email) &&
-        checkPassword(input.password))
-  }
-}
-
 export const LOGIN = {
   value: 'login',
-  route: { name: 'login', href: '/accounts/login/' },
-  API: {
-    GET: '/accounts/login',
-    POST: '/accounts/login'
-  },
-  isValid: REGISTER.isValid
+  views: { href: '/accounts/login/' },
+}
+
+export const REGISTER = {
+  value: 'signup',
+  views: { href: '/accounts/signup' },
 }
 
 export const LOGOUT = {
   value: 'logout',
-  route: { name: 'logout', href: '/accounts/logout/' },
-  API: {
-    GET: '/accounts/logout',
-    POST: '/accounts/logout'
-  }
+  views: { href: '/accounts/logout/' },
 }
 
 /**
@@ -96,20 +91,9 @@ export const USER = {
 
 export const ADMIN = {
   value: 'admin',
-  store: 'admin',
-  route: { name: 'admin', href: '/accounts/admin/' },
+  views: { href: '/accounts/admin/' },
 }
 
-/**
- * @typedef {object}    Track
- *
- * @property {number}   id
- * @property {number}   user
- * @property {string}   track
- * @property {Tag[]}    tags
- * @property {date}     created_at
- * @property {date}     updated_at
- */
 
 export const ALL = {
   VARS,
