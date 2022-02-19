@@ -68,6 +68,19 @@ ACCOUNT_LOGOUT_ON_GET = False
 LOGIN_URL = os.getenv("URL_ACCOUNTS_LOGIN")
 LOGIN_REDIRECT_URL = os.getenv("URL_ACCOUNTS_LOGIN_REDIRECT")
 
+# SOCIAL
+SOCIALACCOUNT_QUERY_EMAIL = True
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 
 # Application definition
 INSTALLED_APPS = [
@@ -91,6 +104,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.google', # for Google OAuth 2.0
 
     # CUSTOM
     'csrf',
